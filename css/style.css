@@ -1,0 +1,150 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+
+    background-image: linear-gradient(0deg, #ffffff55, #c9c8c855);
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+h1{
+    font-size: 50px;
+    color:darkblue;
+    font-weight: bold;
+}
+main {
+    background-color: aliceblue;
+    border-radius: 15px;
+    box-shadow: 0 20px 20px 0 rgba(#ff0000, green, blue, alpha);
+    display: flex;
+    padding: 20px 30px;
+    position: relative;
+    margin: 100px 0;
+    z-index: 10;
+
+}
+
+h2 {
+    font-size: 1rem;
+    text-transform: capitalize;
+}
+
+figure {
+    position: relative;
+    width: 110px;
+
+}
+
+figure::after {
+    content: "";
+    background-color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 50%;
+    bottom: 160%;
+    transform: translate(-50%, 50%);
+}
+
+img{
+
+    border-radius: 50%;
+    width: inherit;
+    height: 110px;
+    object-fit: cover;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    animation: rotate 3s linear infinite;
+    animation-play-state:paused;
+
+
+}
+
+main.play img{
+    animation-play-state: running;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+button {
+    background-color: transparent;
+    border: 0;
+    color: gray;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 0 20px;
+}
+
+#play {
+    color: gray;
+    font-size: 30px;
+}
+
+.music-container {
+    background-color: rgb(39, 189, 189);
+    border-radius: 15px 15px 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 40px);
+    padding: 10px 10px 10px 150px;
+    opacity: 0;
+    margin-left: 20px;
+    transform: translateY(0%);
+    transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+    z-index: 0;
+}
+
+main.play .music-container {
+    opacity: 1;
+    transform: translateY(-100%);
+
+}
+
+
+.progress-container {
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+    height: 4px;
+    width: 100%;
+}
+
+.progress {
+    background-color: aqua;
+    border-radius: 5px;
+    height: 100%;
+    width: 0;
+    transition: width 100ms linear;
+}
